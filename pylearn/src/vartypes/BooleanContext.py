@@ -11,6 +11,14 @@ def something_is_true(anything):
         print(str(anything) + "is false")
     return
 
+def tupleTest():
+    '''元组在bool上下文的值'''
+    print(tupleTest.__doc__)
+    print("空元组为" )
+    something_is_true(())
+    print("至少有一个元素的元组为")
+    something_is_true((True,))
+    return
 if __name__ == '__main__':
     print(__doc__)
     test = something_is_true
@@ -20,3 +28,4 @@ if __name__ == '__main__':
     test(0.0000000001)#非0浮点为真
     test('asdasd')
     test(None)#None 为假
+    tupleTest()
