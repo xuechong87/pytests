@@ -19,30 +19,38 @@ def execute(pathStr):
 
 def iterate(pathStr):
     flag = True
+    if os.path.exists(pathStr)==False:
+        print('path ' + pathStr + 'not exists')
+        return
     while flag:
         flag = False
-        for f in os.listdir(pathStr):
-            fPath = pathStr+ "\\" + f
-            if os.path.exists(fPath) and os.path.isdir(fPath) and pathNotNull(fPath):
-                iterate(fPath)
-            else:
-                flag = True
-                print(fPath)
-                remove(fPath)
+        if os.path.exists(pathStr):
+            for f in os.listdir(pathStr):
+                fPath = pathStr+ "\\" + f
+                if os.path.exists(fPath) and os.path.isdir(fPath) :
+                    if pathNotNull(fPath):
+                        iterate(fPath)
+                    else:
+                        flag = True
+                        print(fPath)
+                        remove(fPath)
     return
 
 if __name__=='__main__':
-    ''' flag = 'y'
-    while(flag!='n'):
-        folderPath = input('输入检查路径')
-        try:
-            execute(folderPath)
-        except:
-            print('出错了')
-        print('finished!')
-        flag=input('按n结束')
     '''
+    flag = 'y'
+    while(flag!='n'):
+        folderPath = input('input path:')
+        try:
+            iterate(folderPath)
+        except:
+            print('erroe')
+        print('finished!')
+        flag=input('press n finish')
+        '''
     iterate('F:\\test1')
+    
+    
    
    
     
