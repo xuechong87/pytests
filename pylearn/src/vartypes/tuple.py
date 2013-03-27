@@ -1,56 +1,27 @@
 '''
-Created on 2013-2-25
-元组:元素是不可变的列表
-@author: Administrator
+Created on 2013-3-27
+元组
+@author: xuechong
 '''
-import time
 
-
-def test1():
-    '''
-    元组的定义方式与列表相同,对元组切片可以得到新的元组
-    与列表主要不同是元组不能修改
-    *元组的速度比列表快??0,0
-    '''
-    print(test1.__doc__)
-    a_tuple = ('a','b','c','d')
-    a_list = ['a','b','c','d']
-    
-    t1 = time.time()  
-    loopTest(a_tuple)
-    print("元组" + str(time.time()-t1))    
-    t2 = time.time()  
-    loopTest(a_list)
-    print("列表" + str(time.time()-t2))  
+def setData():
+    '''使用元组可以一次给多个变量赋值'''
+    print(setData.__doc__)
+    v = ('a',2,True)
+    (x,y,z) = v
+    print(x)
+    print(y)
+    print(z)
+    return
+def useRange():
+    '''可使用内建range()函数快速赋值'''
+    (a,b,c) = range(3)
+    print(a)
+    print(b)
+    print(c)
     return
 
-def loopTest(collec):
-    counts = 10**5
-    for i in range(counts):
-        for j in range(0,len(collec)-1):
-            v = collec[j]
-def rangeTest():
-    '''
-    内建的range()函数构造了一个整数序列,(range()函数从技术上讲返回的是一个迭代器)
-    '''
-    (MONDAY,TUESTDAY,WEDNESDAY,THURSDAY,FRIDAY,SATURDAY,SUNDAY)=range(7)
-    print(MONDAY)
-    print(TUESTDAY)
-    return
-
-def test2():
-    '''
-    *元组和列表可以互相转换
-    '''
-    print(test2.__doc__)
-    a_tuple = ('a','b')
-    list1 = list(a_tuple)
-    print(list1)
-    return
-
-#program start
-if __name__=='__main__':
+if __name__ == "__main__":
     print(__doc__)
-    test1()
-    test2()
-    rangeTest()
+    setData()
+    useRange()
