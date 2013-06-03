@@ -22,9 +22,14 @@ def dictionaryTest():
     del dictionary["Uid"]#delete
     print dictionary
         
+    print dictionary.items()
+    print [k for k,v in dictionary.items()]
+    print [v for k,v in dictionary.items()]    
+    print ["%s=%s" %(v,k) for k,v in dictionary.items()]  
     dictionary.clear()
     print dictionary
-        
+
+
 if __name__=="__main__":
     print dictionaryTest.__doc__
     dictionaryTest()
