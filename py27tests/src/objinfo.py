@@ -3,6 +3,7 @@ Created on 2013-6-5
 
 @author: xuechong
 '''
+
 def info(object,spacing=10,collapse=1):
     '''Print methods and doc strings
     Takes module,class,list,dictionary,or string
@@ -17,5 +18,8 @@ def info(object,spacing=10,collapse=1):
 if __name__=="__main__":
     
     print info.__doc__
-    
-    print info(list)
+    print str(info)
+    #print info(info)
+    print info(None)
+    print hash(None)
+    help(None)
