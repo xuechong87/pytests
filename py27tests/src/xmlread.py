@@ -5,25 +5,31 @@ read xml
 '''
 from xml.etree import ElementTree
 
-xmlPath = "F:\\weixin.xml";
+
 
 class TextMsg:
-    def __init__(self,nodeXML):
-        for node in nodeXML.getchildren():
-            setattr(self, node.tag, node.text)
-            
+    
     ToUserName=''
     FromUserName=''
     CreateTime=0
     MsgType=''
     Content=''
     MsgId=0
+    
+    def __init__(self,xmlContent):
+        '''
+        xmlContent the str content of the xml
+        '''
+        root = ElementTree.fromstring(xmlContent)
+        _nodes = root.getiterator("xml")
+        for node in _nodes.pop().getchildren():
+            setattr(self, node.tag, node.text)
+            
+xmlPath = "F:\\weixin.xml";
 
 def getXml(path):
     xmlContent = open(path).read()
-    root = ElementTree.fromstring(xmlContent)
-    _nodes = root.getiterator("xml")
-    return TextMsg(_nodes.pop())
+    return TextMsg(xmlContent)
 
 
 if __name__ == "__main__":
