@@ -5,8 +5,6 @@ read xml
 '''
 from xml.etree import ElementTree
 
-
-
 class TextMsg:
     
     ToUserName=''
