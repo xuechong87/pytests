@@ -29,7 +29,6 @@ def getXml(path):
     xmlContent = open(path).read()
     return TextMsg(xmlContent)
 
-
 if __name__ == "__main__":
     getXml(xmlPath).desc()
     
