@@ -1,7 +1,13 @@
 '''
 Created on 2013-7-23
+folder:F:\tests
+filetype:txt
+origin:cccd
+replacemnt:xxxxxxxxxxxxxxxy
 
 @author: xuechong
+
+use python 32+ please
 '''
 
 import os
@@ -19,43 +25,24 @@ def execute(path,origin,replacement,regexp="^\S*.txt$"):
             replaceStr(absPath,origin,replacement)
             
         if os.path.isdir(absPath):
-            execute(absPath,regexp)
+            execute(absPath,origin,replacement,regexp)
         
 def replaceStr(filePath,origin,replacement):
-    file_ = os.open(filePath, "r+",-1,"utf-8")
-    file_.seek(origin)
-    file_.write(replacement)
-    file_.flush()
+    file_ = open(filePath,"r+",-1,"utf-8")
+    text = file_.read()
     file_.close()
+    dest =  open(filePath,"w",-1,"utf-8")
+    dest.write(re.sub(origin, replacement, text))
+    dest.flush()
+    dest.close()
     
 if __name__ == '__main__':
-#    help(os.open)
-#    dest_path = str(input("folder"))
-#    regexp = "^\S*." + str(input("filetype")) + "$"
-#    origin = str(input("origin"))
-#    replace = str(input("replacemnt"))
-#    execute(path=dest_path,
-#            regexp=regexp,
-#            origin=origin,
-#            replacement=replace)
-    file_ = open("F:/tests/asdasd.txt","r+",-1,"utf-8")
-    file_.write(re.sub('cccd', 'python', file_.read()))
-    file_.flush()
-    file_.close()
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    dest_path = str(input("folder"))
+    regexp = "^\S*." + str(input("filetype")) + "$"
+    origin = str(input("origin"))
+    replace = str(input("replacemnt"))
+    execute(path=dest_path,
+            regexp=regexp,
+            origin=origin,
+            replacement=replace)
     pass
